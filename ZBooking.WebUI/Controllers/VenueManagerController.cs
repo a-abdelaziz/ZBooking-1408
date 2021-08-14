@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZBooking.Core.Models;
+using ZBooking.Core.ViewModels;
 using ZBooking.DataAccess.InMemory;
 
 namespace ZBooking.WebUI.Controllers
@@ -11,10 +12,12 @@ namespace ZBooking.WebUI.Controllers
     public class VenueManagerController : Controller
     {
         VenueRepository context;
+        VenueActivityRepository venueActivities;
 
         public VenueManagerController()
         {
             context = new VenueRepository();
+            venueActivities = new VenueActivityRepository();
         }
         // GET: VenueManager
         public ActionResult Index()
@@ -25,8 +28,11 @@ namespace ZBooking.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Venue venue = new Venue();
-            return View(venue);
+            VenueManagerViewModel viewModel = new VenueManagerViewModel();
+
+            viewModel.Venue = new Venue();
+            viewModel.VenueActivities = venueActivities.Collection();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -56,7 +62,10 @@ namespace ZBooking.WebUI.Controllers
             }
             else
             {
-                return View(venue);
+                VenueManagerViewModel viewModel = new VenueManagerViewModel();
+                viewModel.Venue = venue;
+                viewModel.VenueActivities = venueActivities.Collection();
+                return View(viewModel);
             }
         }
 
@@ -78,6 +87,7 @@ namespace ZBooking.WebUI.Controllers
                 venueToEdit.Name = venue.Name;
                 venueToEdit.SubName = venue.SubName;
                 venueToEdit.Description = venue.Description;
+                venueToEdit.Activity = venue.Activity;
                 venueToEdit.image = venue.image;
                 venueToEdit.Longitude = venue.Longitude;
                 venueToEdit.Latitude = venue.Latitude;

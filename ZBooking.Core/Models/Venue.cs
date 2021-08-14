@@ -17,6 +17,7 @@ namespace ZBooking.Core.Models
         [DisplayName("Venue SubName")]
         public string SubName { get; set; }
         public string Description { get; set; }
+        public string Activity { get; set; }
         public string image { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }

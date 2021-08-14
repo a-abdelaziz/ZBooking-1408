@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\VenueActivityManagerController.cs" />
     <Compile Include="Controllers\VenueManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,6 +241,10 @@
     <Content Include="Views\VenueManager\Create.cshtml" />
     <Content Include="Views\VenueManager\Edit.cshtml" />
     <Content Include="Views\VenueManager\Delete.cshtml" />
+    <Content Include="Views\VenueActivityManager\Index.cshtml" />
+    <Content Include="Views\VenueActivityManager\Create.cshtml" />
+    <Content Include="Views\VenueActivityManager\Edit.cshtml" />
+    <Content Include="Views\VenueActivityManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
