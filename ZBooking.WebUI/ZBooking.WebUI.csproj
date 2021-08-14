@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\VenueManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +236,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\VenueManager\Index.cshtml" />
+    <Content Include="Views\VenueManager\Create.cshtml" />
+    <Content Include="Views\VenueManager\Edit.cshtml" />
+    <Content Include="Views\VenueManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +256,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZBooking.Core\ZBooking.Core.csproj">
+      <Project>{64c47efe-d63c-4248-9294-2abb3cd232d0}</Project>
+      <Name>ZBooking.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZBooking.DataAccess.InMemory\ZBooking.DataAccess.InMemory.csproj">
+      <Project>{77d99197-f054-4483-822a-fbdb8e9ec521}</Project>
+      <Name>ZBooking.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZBooking.DataAccess.SQL\ZBooking.DataAccess.SQL.csproj">
+      <Project>{f8e7807c-5482-4a30-a830-a14269d963e5}</Project>
+      <Name>ZBooking.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZBooking.Services\ZBooking.Services.csproj">
+      <Project>{ccaf7261-3b9b-4511-93db-b33ca7c1b908}</Project>
+      <Name>ZBooking.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
