@@ -5,16 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using ZBooking.DataAccess.InMemory;
 using ZBooking.Core.Models;
+using ZBooking.Core.Contracts;
 
 namespace ZBooking.WebUI.Controllers
 {
     public class VenueActivityManagerController : Controller
     {
-        InMemoryRepository<VenueActivity> context;
+        IRepository<VenueActivity> context;
 
-        public VenueActivityManagerController()
+        public VenueActivityManagerController(IRepository<VenueActivity> context)
         {
-            context = new InMemoryRepository<VenueActivity>();
+            this.context = context;
         }
         // GET: VenueActivityManager
         public ActionResult Index()
