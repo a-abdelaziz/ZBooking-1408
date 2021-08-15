@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace ZBooking.Core.Models
 {
-    public class Venue
+    public class Venue : BaseEntity
     {
-        public string Id { get; set; }
         [StringLength(20)]
         [DisplayName("Venue Name")]
         public string Name { get; set; }
@@ -24,10 +23,6 @@ namespace ZBooking.Core.Models
         [Range(0, 10000)]
         public decimal DayPrice { get; set; }
         public decimal HourPrice { get; set; }
-
-        public Venue(){
-            this.Id = Guid.NewGuid().ToString();
-        }
 
     }
 }

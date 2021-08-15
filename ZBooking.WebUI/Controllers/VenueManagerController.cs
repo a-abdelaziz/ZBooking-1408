@@ -11,13 +11,13 @@ namespace ZBooking.WebUI.Controllers
 {
     public class VenueManagerController : Controller
     {
-        VenueRepository context;
-        VenueActivityRepository venueActivities;
+        InMemoryRepository<Venue> context;
+        InMemoryRepository<VenueActivity> venueActivities;
 
         public VenueManagerController()
         {
-            context = new VenueRepository();
-            venueActivities = new VenueActivityRepository();
+            context = new InMemoryRepository<Venue>();
+            venueActivities = new InMemoryRepository<VenueActivity>();
         }
         // GET: VenueManager
         public ActionResult Index()
