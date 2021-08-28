@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,8 @@ namespace ZBooking.Core.Models
 {
     public abstract class BaseEntity
     {
-        public string Id;
+        [Key]
+        public string Id { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
 
         public BaseEntity()
