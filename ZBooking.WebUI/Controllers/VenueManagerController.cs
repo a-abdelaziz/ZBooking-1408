@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -37,7 +38,7 @@ namespace ZBooking.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Venue venue)
+        public ActionResult Create(Venue venue, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -45,6 +46,11 @@ namespace ZBooking.WebUI.Controllers
             }
             else
             {
+                if(file != null)
+                {
+                    venue.image = venue.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//VenueImages//") + venue.image);
+                }
                 context.Insert(venue);
                 context.Commit();
 
@@ -71,7 +77,7 @@ namespace ZBooking.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit (Venue venue, string Id)
+        public ActionResult Edit (Venue venue, string Id, HttpPostedFileBase file)
         {
             Venue venueToEdit = context.Find(Id);
 
@@ -85,11 +91,16 @@ namespace ZBooking.WebUI.Controllers
                 {
                     return View(venue);
                 }
+                if (file != null)
+                {
+                    venueToEdit.image = venueToEdit.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//VenueImages//") + venueToEdit.image);
+                }
+
                 venueToEdit.Name = venue.Name;
                 venueToEdit.SubName = venue.SubName;
                 venueToEdit.Description = venue.Description;
                 venueToEdit.Activity = venue.Activity;
-                venueToEdit.image = venue.image;
                 venueToEdit.Longitude = venue.Longitude;
                 venueToEdit.Latitude = venue.Latitude;
                 venueToEdit.HourPrice = venue.HourPrice;
