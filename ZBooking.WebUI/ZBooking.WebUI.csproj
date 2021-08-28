@@ -265,6 +265,7 @@
     <Content Include="Views\VenueActivityManager\Create.cshtml" />
     <Content Include="Views\VenueActivityManager\Edit.cshtml" />
     <Content Include="Views\VenueActivityManager\Delete.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

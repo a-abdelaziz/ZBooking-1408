@@ -3,14 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ZBooking.Core.Contracts;
+using ZBooking.Core.Models;
 
 namespace ZBooking.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        IRepository<Venue> context;
+        IRepository<VenueActivity> venueActivities;
+
+        public HomeController(IRepository<Venue> venueContext, IRepository<VenueActivity> venueActivityContext)
+        {
+            context = venueContext;
+            venueActivities = venueActivityContext;
+        }
+        // GET: VenueManager
         public ActionResult Index()
         {
-            return View();
+            List<Venue> venues = context.Collection().ToList();
+            return View(venues);
+        }
+
+        public ActionResult Details(string Id)
+        {
+            Venue venue = context.Find(Id);
+            if (venue == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(venue);
+            }
         }
 
         public ActionResult About()
