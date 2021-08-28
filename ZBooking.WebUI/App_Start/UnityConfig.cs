@@ -4,6 +4,7 @@ using Unity;
 using ZBooking.Core.Contracts;
 using ZBooking.Core.Models;
 using ZBooking.DataAccess.InMemory;
+using ZBooking.DataAccess.SQL;
 
 namespace ZBooking.WebUI
 {
@@ -45,8 +46,8 @@ namespace ZBooking.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Venue>, InMemoryRepository<Venue>>();
-            container.RegisterType<IRepository<VenueActivity>, InMemoryRepository<VenueActivity>>();
+            container.RegisterType<IRepository<Venue>, SQLRepository<Venue>>();
+            container.RegisterType<IRepository<VenueActivity>, SQLRepository<VenueActivity>>();
         }
     }
 }
